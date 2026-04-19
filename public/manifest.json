@@ -1,0 +1,61 @@
+{
+  "name": "GlowUp — Self-Improvement",
+  "short_name": "GlowUp",
+  "description": "Your premium self-improvement command center. Transform your health, mind, and lifestyle.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "id": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "window-controls-overlay"],
+  "handle_links": "preferred",
+  "orientation": "portrait-primary",
+  "background_color": "#08080d",
+  "theme_color": "#0a0a0f",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["health", "lifestyle", "fitness"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Daily Routine",
+      "short_name": "Routine",
+      "description": "View your optimized daily blueprint",
+      "url": "/?route=routine&source=shortcut",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Explore Modules",
+      "short_name": "Explore",
+      "description": "Browse all health modules",
+      "url": "/?route=explore&source=shortcut",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}

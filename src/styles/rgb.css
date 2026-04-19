@@ -1,0 +1,156 @@
+/* ============================================
+   GLOWUP — RGB INTELLIGENCE SYSTEM
+   Ambient lighting, priority-aware backgrounds
+   ============================================ */
+
+/* ── RGB Container ── */
+.rgb-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 1s var(--ease-smooth);
+}
+
+body.rgb-active .rgb-container {
+  opacity: 1;
+}
+
+/* ── Corner Orbs ── */
+.rgb-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.25;
+  will-change: transform, opacity;
+}
+
+.rgb-orb-1 {
+  width: 200px; height: 200px;
+  top: -60px; left: -60px;
+  background: #a78bfa;
+  animation: orbFloat1 12s ease-in-out infinite;
+}
+
+.rgb-orb-2 {
+  width: 180px; height: 180px;
+  top: -40px; right: -50px;
+  background: #06b6d4;
+  animation: orbFloat2 14s ease-in-out infinite;
+}
+
+.rgb-orb-3 {
+  width: 220px; height: 220px;
+  bottom: 80px; left: -70px;
+  background: #f472b6;
+  animation: orbFloat3 16s ease-in-out infinite;
+}
+
+.rgb-orb-4 {
+  width: 160px; height: 160px;
+  bottom: 60px; right: -40px;
+  background: #34d399;
+  animation: orbFloat4 13s ease-in-out infinite;
+}
+
+.rgb-orb-5 {
+  width: 140px; height: 140px;
+  top: 40%; left: 50%;
+  transform: translateX(-50%);
+  background: #fbbf24;
+  animation: orbFloat5 18s ease-in-out infinite;
+  opacity: 0.12;
+}
+
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.25; }
+  33% { transform: translate(30px, 20px) scale(1.1); opacity: 0.35; }
+  66% { transform: translate(-10px, 40px) scale(0.95); opacity: 0.2; }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.25; }
+  33% { transform: translate(-25px, 30px) scale(0.9); opacity: 0.3; }
+  66% { transform: translate(15px, -20px) scale(1.1); opacity: 0.2; }
+}
+
+@keyframes orbFloat3 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+  50% { transform: translate(40px, -25px) scale(1.15); opacity: 0.3; }
+}
+
+@keyframes orbFloat4 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+  50% { transform: translate(-30px, -20px) scale(1.1); opacity: 0.3; }
+}
+
+@keyframes orbFloat5 {
+  0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.08; }
+  50% { transform: translateX(-50%) scale(1.3); opacity: 0.15; }
+}
+
+/* ── Edge Glow Lines ── */
+.rgb-edge {
+  position: absolute;
+}
+
+.rgb-edge-top {
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-primary), var(--accent-secondary), transparent);
+  opacity: 0.4;
+  animation: edgeShift 8s ease infinite;
+}
+
+.rgb-edge-bottom {
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-tertiary), var(--accent-primary), transparent);
+  opacity: 0.3;
+  animation: edgeShift 10s ease infinite reverse;
+}
+
+@keyframes edgeShift {
+  0%, 100% { background-position: 0% 50%; opacity: 0.2; }
+  50% { background-position: 100% 50%; opacity: 0.5; }
+}
+
+/* ── Priority-Aware Glow ── */
+body.rgb-active .glass-card.priority-high {
+  box-shadow: 0 0 25px rgba(167, 139, 250, 0.12), 0 0 50px rgba(167, 139, 250, 0.05);
+}
+
+body.rgb-active .glass-card.priority-medium {
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.08);
+}
+
+body.rgb-active .glass-card.priority-avoid {
+  box-shadow: 0 0 20px rgba(248, 113, 113, 0.1);
+}
+
+/* ── Dynamic Background Mesh ── */
+.rgb-mesh {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 300px 200px at 20% 20%, rgba(167, 139, 250, 0.06), transparent),
+    radial-gradient(ellipse 250px 250px at 80% 60%, rgba(6, 182, 212, 0.04), transparent),
+    radial-gradient(ellipse 200px 300px at 50% 90%, rgba(244, 114, 182, 0.04), transparent);
+  animation: meshDrift 20s ease-in-out infinite;
+}
+
+@keyframes meshDrift {
+  0%, 100% {
+    background:
+      radial-gradient(ellipse 300px 200px at 20% 20%, rgba(167, 139, 250, 0.06), transparent),
+      radial-gradient(ellipse 250px 250px at 80% 60%, rgba(6, 182, 212, 0.04), transparent),
+      radial-gradient(ellipse 200px 300px at 50% 90%, rgba(244, 114, 182, 0.04), transparent);
+  }
+  50% {
+    background:
+      radial-gradient(ellipse 300px 200px at 60% 40%, rgba(167, 139, 250, 0.06), transparent),
+      radial-gradient(ellipse 250px 250px at 30% 80%, rgba(6, 182, 212, 0.04), transparent),
+      radial-gradient(ellipse 200px 300px at 70% 20%, rgba(244, 114, 182, 0.04), transparent);
+  }
+}
